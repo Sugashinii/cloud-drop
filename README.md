@@ -1,3 +1,22 @@
-FileShare Hub is a cloud-based file management and sharing application featuring a modern, fully responsive UI. 
+# Cloud-Drop 🚀
+Modern Drag & Drop File Sharing App
 
-It allows users to upload, organize, preview, and securely share files with fine-grained access control, focusing on performance, usability, scalability, and clean, maintainable architecture built with modern web technologies.
+## ✨ Features
+- Drag & drop file uploads  
+- Real-time progress bars
+- Image/PDF preview
+- Fully responsive design
+- Clean modern UI
+
+## 🛠️ Tech Stack
+- React 18 + Vite
+- TailwindCSS 3
+- React Dropzone
+
+## 🚀 Live Demo
+[cloud-drop.vercel.app](https://cloud-drop.vercel.app)
+
+## Quick Start
+```bash
+npm install
+npm run dev
