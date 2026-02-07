@@ -14,7 +14,7 @@ Modern Drag & Drop File Sharing App
 - React Dropzone
 
 ## 🚀 Live Demo
-[cloud-drop.vercel.app](https://cloud-drop.vercel.app)
+https://cloud-drop-puce.vercel.app
 
 ## Quick Start
 ```bash
