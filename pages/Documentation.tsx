@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { FiBook, FiCheckCircle, FiShield, FiUsers, FiCloud, FiArrowLeft, FiCode, FiZap } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
@@ -17,7 +16,10 @@ const Documentation: React.FC = () => {
   return (
     <div className="min-h-screen bg-transparent text-white pt-32 pb-20 px-6 relative">
       <Link to="/" className="fixed top-8 left-8 z-50 flex items-center gap-2 text-slate-500 hover:text-white transition-all font-bold text-sm uppercase tracking-widest bg-white/5 px-4 py-2 rounded-xl backdrop-blur-md border border-white/5">
-        <FiArrowLeft /> Return Home
+        <span className="">
+          <FiArrowLeft />
+        </span>
+        Return Home
       </Link>
 
       <div className="container mx-auto max-w-6xl">
@@ -29,7 +31,7 @@ const Documentation: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-4 gap-10 items-start">
-          {/* Sidebar Nav */}
+    
           <div className="lg:col-span-1 space-y-2 sticky top-32">
             {tabs.map((tab) => (
               <button
@@ -49,17 +51,21 @@ const Documentation: React.FC = () => {
             ))}
           </div>
 
-          {/* Content Area */}
+  
           <div className="lg:col-span-3">
             <div className="glass-surface p-10 md:p-16 rounded-[3rem] border-white/10 min-h-[600px] animate-in fade-in slide-in-from-right-10 duration-500">
               
               {activeTab === 'getting-started' && (
                 <div className="space-y-10">
                   <h2 className="text-3xl font-heading font-bold flex items-center gap-3">
-                    <FiZap className="text-indigo-400" /> Getting Started
+              
+                    <span className="text-indigo-400">
+                      <FiZap />
+                    </span>
+                    Getting Started
                   </h2>
                   <p className="text-slate-400 leading-relaxed font-medium">
-                    FileShare Hub is designed to be intuitive for individual developers and robust enough for large enterprise teams. Follow this quick guide to initialize your workspace.
+                    Cloud-Drop is designed to be intuitive for individual developers and robust enough for large enterprise teams. Follow this quick guide to initialize your workspace.
                   </p>
                   
                   <div className="grid gap-6">
@@ -83,7 +89,11 @@ const Documentation: React.FC = () => {
               {activeTab === 'file-management' && (
                 <div className="space-y-10">
                   <h2 className="text-3xl font-heading font-bold flex items-center gap-3">
-                    <FiCloud className="text-indigo-400" /> File Management
+              
+                    <span className="text-indigo-400">
+                      <FiCloud />
+                    </span>
+                    File Management
                   </h2>
                   <p className="text-slate-400 leading-relaxed font-medium">
                     Manage your assets with precision using our advanced object management tools.
@@ -94,10 +104,30 @@ const Documentation: React.FC = () => {
                       <h3 className="text-xl font-bold mb-4">Object Ingestion (Upload)</h3>
                       <p className="text-slate-400 text-sm mb-4">You can ingest files via the web interface by dragging and dropping them anywhere on the explorer view. Supported file types include Images, Videos, PDFs, and generic binaries.</p>
                       <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-bold text-indigo-300 uppercase tracking-widest">
-                        <li className="flex items-center gap-2 bg-white/5 p-3 rounded-xl border border-white/5"><FiCheckCircle /> Bulk Uploading</li>
-                        <li className="flex items-center gap-2 bg-white/5 p-3 rounded-xl border border-white/5"><FiCheckCircle /> Recursive Folders</li>
-                        <li className="flex items-center gap-2 bg-white/5 p-3 rounded-xl border border-white/5"><FiCheckCircle /> Version Conflict Resolution</li>
-                        <li className="flex items-center gap-2 bg-white/5 p-3 rounded-xl border border-white/5"><FiCheckCircle /> Immediate Encryption</li>
+                        <li className="flex items-center gap-2 bg-white/5 p-3 rounded-xl border border-white/5">
+                          <span className="">
+                            <FiCheckCircle />
+                          </span>
+                          Bulk Uploading
+                        </li>
+                        <li className="flex items-center gap-2 bg-white/5 p-3 rounded-xl border border-white/5">
+                          <span className="">
+                            <FiCheckCircle />
+                          </span>
+                          Recursive Folders
+                        </li>
+                        <li className="flex items-center gap-2 bg-white/5 p-3 rounded-xl border border-white/5">
+                          <span className="">
+                            <FiCheckCircle />
+                          </span>
+                          Version Conflict Resolution
+                        </li>
+                        <li className="flex items-center gap-2 bg-white/5 p-3 rounded-xl border border-white/5">
+                          <span className="">
+                            <FiCheckCircle />
+                          </span>
+                          Immediate Encryption
+                        </li>
                       </ul>
                     </section>
 
@@ -112,7 +142,11 @@ const Documentation: React.FC = () => {
               {activeTab === 'collaboration' && (
                 <div className="space-y-10">
                   <h2 className="text-3xl font-heading font-bold flex items-center gap-3">
-                    <FiUsers className="text-indigo-400" /> Collaboration
+            
+                    <span className="text-indigo-400">
+                      <FiUsers />
+                    </span>
+                    Collaboration
                   </h2>
                   <p className="text-slate-400 leading-relaxed font-medium">
                     Share resources securely across your organization or with external developers.
@@ -139,7 +173,11 @@ const Documentation: React.FC = () => {
               {activeTab === 'security' && (
                 <div className="space-y-10">
                   <h2 className="text-3xl font-heading font-bold flex items-center gap-3">
-                    <FiShield className="text-indigo-400" /> Security & Privacy
+             
+                    <span className="text-indigo-400">
+                      <FiShield />
+                    </span>
+                    Security & Privacy
                   </h2>
                   <p className="text-slate-400 leading-relaxed font-medium">
                     Our platform is built on a zero-trust architecture. Your privacy is protected by multiple layers of modern cryptography.
@@ -148,7 +186,10 @@ const Documentation: React.FC = () => {
                   <div className="space-y-6">
                     <div className="flex items-start gap-4 p-6 rounded-2xl bg-slate-900 border border-white/5">
                       <div className="p-3 bg-indigo-500/20 rounded-xl text-indigo-400">
-                        <FiShield size={24} />
+                  
+                        <span className="" style={{ fontSize: '24px' }}>
+                          <FiShield />
+                        </span>
                       </div>
                       <div>
                         <h4 className="font-bold mb-1">AES-256 GCM Encryption</h4>
@@ -158,7 +199,10 @@ const Documentation: React.FC = () => {
 
                     <div className="flex items-start gap-4 p-6 rounded-2xl bg-slate-900 border border-white/5">
                       <div className="p-3 bg-purple-500/20 rounded-xl text-purple-400">
-                        <FiZap size={24} />
+                
+                        <span className="" style={{ fontSize: '24px' }}>
+                          <FiZap />
+                        </span>
                       </div>
                       <div>
                         <h4 className="font-bold mb-1">Quantum-Resistant Keys</h4>
@@ -172,8 +216,13 @@ const Documentation: React.FC = () => {
               {activeTab === 'developer-api' && (
                 <div className="space-y-10">
                   <h2 className="text-3xl font-heading font-bold flex items-center gap-3">
-                    <FiCode className="text-indigo-400" /> Developer API
+          
+                    <span className="text-indigo-400">
+                      <FiCode />
+                    </span>
+                    Developer API
                   </h2>
+              
                   <p className="text-slate-400 leading-relaxed font-medium">
                     Integrate FileShare Hub directly into your CI/CD pipelines and custom applications.
                   </p>
@@ -186,9 +235,9 @@ const Documentation: React.FC = () => {
                        <span className="ml-2 text-slate-500 text-xs">Bash — Upload file</span>
                     </div>
                     <code className="text-indigo-300">
-                      curl -X POST "https://api.fileshare.io/v1/objects" \<br />
-                      &nbsp;&nbsp;-H "Authorization: Bearer $HUB_TOKEN" \<br />
-                      &nbsp;&nbsp;-F "file=@/path/to/asset.zip" \<br />
+                      curl -X POST "https://api.fileshare.io/v1/objects" <br />
+                      &nbsp;&nbsp;-H "Authorization: Bearer $HUB_TOKEN" <br />
+                      &nbsp;&nbsp;-F "file=@/path/to/asset.zip" <br />
                       &nbsp;&nbsp;-F "parent_id=folder_123"
                     </code>
                   </div>

@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { 
   FiGrid, FiList, FiMoreVertical, FiFolder, FiFile, FiDownload, FiShare2, FiStar, FiTrash2, FiSearch, FiFilter, FiUpload
@@ -16,20 +15,45 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ title }) => {
 
   const filteredFiles = files.filter(f => f.name.toLowerCase().includes(search.toLowerCase()));
 
+
   const getIcon = (type: FileType) => {
     switch (type) {
-      case FileType.FOLDER: return <FiFolder className="text-amber-400" />;
-      case FileType.IMAGE: return <FiFile className="text-indigo-400" />;
-      case FileType.VIDEO: return <FiFile className="text-emerald-400" />;
-      case FileType.PDF: return <FiFile className="text-rose-400" />;
-      default: return <FiFile className="text-slate-400" />;
+      case FileType.FOLDER: 
+        return (
+          <span className="text-amber-400">
+            <FiFolder />
+          </span>
+        );
+      case FileType.IMAGE: 
+        return (
+          <span className="text-indigo-400">
+            <FiFile />
+          </span>
+        );
+      case FileType.VIDEO: 
+        return (
+          <span className="text-emerald-400">
+            <FiFile />
+          </span>
+        );
+      case FileType.PDF: 
+        return (
+          <span className="text-rose-400">
+            <FiFile />
+          </span>
+        );
+      default: 
+        return (
+          <span className="text-slate-400">
+            <FiFile />
+          </span>
+        );
     }
   };
 
   const handleDownload = (e: React.MouseEvent, fileName: string) => {
     e.stopPropagation();
     addNotification(`Downloading ${fileName}...`);
-    // Simulated download logic
   };
 
   const handleShare = (e: React.MouseEvent, fileName: string) => {
@@ -43,7 +67,10 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ title }) => {
         <h1 className="text-4xl font-heading font-extrabold tracking-tight">{title}</h1>
         <div className="flex items-center gap-3 w-full md:w-auto">
           <div className="relative flex-1 md:w-72">
-            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" />
+     
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" style={{ fontSize: '16px' }}>
+              <FiSearch />
+            </span>
             <input 
               type="text" 
               placeholder="Filter items..." 
@@ -56,7 +83,10 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ title }) => {
             onClick={() => fileInputRef.current?.click()}
             className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-bold text-sm hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-600/20 active:scale-95"
           >
-            <FiUpload /> Upload
+            <span className="" style={{ fontSize: '16px' }}>
+              <FiUpload />
+            </span>
+            Upload
           </button>
           <input 
             type="file" 
@@ -64,7 +94,7 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ title }) => {
             onChange={(e) => {
               if (e.target.files?.[0]) {
                 uploadFile(e.target.files[0]);
-                e.target.value = ''; // Reset input
+                e.target.value = '';
               }
             }} 
             className="hidden" 
@@ -78,21 +108,28 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ title }) => {
             onClick={() => setView('grid')} 
             className={`p-2.5 rounded-xl transition-all ${view === 'grid' ? 'bg-indigo-600 text-white shadow-md' : 'text-slate-500 hover:bg-white/5'}`}
           >
-            <FiGrid size={18} />
+            <span className="" style={{ fontSize: '18px' }}>
+              <FiGrid />
+            </span>
           </button>
           <button 
             onClick={() => setView('list')} 
             className={`p-2.5 rounded-xl transition-all ${view === 'list' ? 'bg-indigo-600 text-white shadow-md' : 'text-slate-500 hover:bg-white/5'}`}
           >
-            <FiList size={18} />
+            <span className="" style={{ fontSize: '18px' }}>
+              <FiList />
+            </span>
           </button>
         </div>
         <div className="flex items-center gap-6 px-4">
+
           <button 
             onClick={() => addNotification("Filter features coming in next update!")}
             className="text-slate-500 hover:text-white transition-colors p-1"
           >
-            <FiFilter />
+            <span className="" style={{ fontSize: '16px' }}>
+              <FiFilter />
+            </span>
           </button>
           <div className="hidden sm:flex items-center gap-2 text-xs font-bold text-slate-500">
             <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
@@ -105,7 +142,10 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ title }) => {
       {filteredFiles.length === 0 ? (
         <div className="text-center py-24 glass-surface rounded-[2.5rem] border border-dashed border-white/10">
           <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4">
-            <FiSearch className="text-slate-500 text-2xl" />
+
+            <span className="text-slate-500 text-2xl">
+              <FiSearch />
+            </span>
           </div>
           <h3 className="text-lg font-bold mb-1">No matching files</h3>
           <p className="text-slate-500 font-medium">Try adjusting your search or filters.</p>
@@ -126,21 +166,27 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ title }) => {
                     className={`p-2 hover:bg-white/10 rounded-lg transition-colors ${file.isStarred ? 'text-amber-400' : 'text-slate-400'}`}
                     title="Star"
                   >
-                    <FiStar size={14} />
+                    <span className="" style={{ fontSize: '14px' }}>
+                      <FiStar />
+                    </span>
                   </button>
                   <button 
                     onClick={(e) => handleDownload(e, file.name)} 
                     className="p-2 hover:bg-indigo-500/20 text-slate-400 hover:text-indigo-400 rounded-lg transition-colors"
                     title="Download"
                   >
-                    <FiDownload size={14} />
+                    <span className="" style={{ fontSize: '14px' }}>
+                      <FiDownload />
+                    </span>
                   </button>
                   <button 
                     onClick={() => deleteFile(file.id)} 
                     className="p-2 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 rounded-lg transition-colors"
                     title="Delete"
                   >
-                    <FiTrash2 size={14} />
+                    <span className="" style={{ fontSize: '14px' }}>
+                      <FiTrash2 />
+                    </span>
                   </button>
                 </div>
               </div>
@@ -176,20 +222,31 @@ const FileExplorer: React.FC<FileExplorerProps> = ({ title }) => {
                   <td className="px-8 py-4 text-right" onClick={e => e.stopPropagation()}>
                     <div className="flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                       <button onClick={() => toggleStar(file.id)} className={`p-2 rounded-lg transition-colors ${file.isStarred ? 'text-amber-400' : 'text-slate-500 hover:text-white'}`}>
-                        <FiStar size={16} />
+                        <span className="" style={{ fontSize: '16px' }}>
+                          <FiStar />
+                        </span>
                       </button>
                       <button onClick={(e) => handleShare(e, file.name)} className="p-2 text-slate-500 hover:text-indigo-400 rounded-lg transition-colors">
-                        <FiShare2 size={16} />
+                        <span className="" style={{ fontSize: '16px' }}>
+                          <FiShare2 />
+                        </span>
                       </button>
                       <button onClick={(e) => handleDownload(e, file.name)} className="p-2 text-slate-500 hover:text-indigo-400 rounded-lg transition-colors">
-                        <FiDownload size={16} />
+                        <span className="" style={{ fontSize: '16px' }}>
+                          <FiDownload />
+                        </span>
                       </button>
                       <button onClick={() => deleteFile(file.id)} className="p-2 text-slate-500 hover:text-rose-400 rounded-lg transition-colors">
-                        <FiTrash2 size={16} />
+                        <span className="" style={{ fontSize: '16px' }}>
+                          <FiTrash2 />
+                        </span>
                       </button>
                     </div>
                     <div className="group-hover:hidden">
-                       <FiMoreVertical className="ml-auto text-slate-600" />
+             
+                      <span className="ml-auto text-slate-600" style={{ fontSize: '16px' }}>
+                        <FiMoreVertical />
+                      </span>
                     </div>
                   </td>
                 </tr>

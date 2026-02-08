@@ -30,7 +30,10 @@ const FilePreviewer: React.FC = () => {
       default:
         return (
           <div className="p-20 text-center">
-            <FiExternalLink size={48} className="mx-auto mb-4 text-slate-500" />
+       
+            <span className="mx-auto mb-4 text-slate-500" style={{ fontSize: '48px' }}>
+              <FiExternalLink />
+            </span>
             <p className="text-lg">Preview not available for this file type.</p>
           </div>
         );
@@ -48,18 +51,25 @@ const FilePreviewer: React.FC = () => {
             <span className="text-xs px-2 py-0.5 rounded-full bg-white/5 text-slate-400 uppercase tracking-widest">{(previewFile.size / (1024 * 1024)).toFixed(1)} MB</span>
           </div>
           <div className="flex items-center gap-2">
+    
             <button className="p-2 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition-all">
-              <FiDownload />
+              <span className="">
+                <FiDownload />
+              </span>
             </button>
             <button className="p-2 hover:bg-white/5 rounded-lg text-slate-400 hover:text-white transition-all">
-              <FiShare2 />
+              <span className="">
+                <FiShare2 />
+              </span>
             </button>
             <div className="w-[1px] h-6 bg-white/5 mx-1"></div>
             <button 
               onClick={() => setPreviewFile(null)}
               className="p-2 bg-white/5 hover:bg-red-500/20 hover:text-red-400 rounded-lg transition-all"
             >
-              <FiX />
+              <span className="">
+                <FiX />
+              </span>
             </button>
           </div>
         </div>

@@ -15,6 +15,12 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
+  const sugarUser = {
+    name: 'Sugar',
+    email: 'sugar@clouddrop.app',
+    avatar: '/default-avatar.svg'
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -28,15 +34,15 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout }) => {
   return (
     <header className="h-20 px-10 flex items-center justify-between border-b border-white/5 relative z-50 bg-[#020617]/40 backdrop-blur-md">
       <div className="hidden md:flex items-center gap-3 px-4 py-2 bg-slate-900/50 border border-white/5 rounded-xl w-96 text-slate-500">
-        <FiSearch />
+        <span className=""><FiSearch /></span>
         <input 
           type="text" 
           placeholder="Quick search anything..." 
           className="bg-transparent border-none outline-none text-xs font-medium flex-1 text-slate-300 placeholder:text-slate-500"
         />
         <div className="flex items-center gap-1 opacity-50">
-          <FiCommand size={10} />
-          <span className="text-[10px] font-bold">K</span>
+          <span className="" style={{ fontSize: '10px' }}><FiCommand /></span>
+          <span className="text-[10px] font-bold">S</span> 
         </div>
       </div>
 
@@ -45,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout }) => {
           onClick={() => addNotification("No new notifications")}
           className="relative p-2 text-slate-400 hover:text-white transition-colors"
         >
-          <FiBell size={20} />
+          <span className="" style={{ fontSize: '20px' }}><FiBell /></span>
           <span className="absolute top-2 right-2 w-1.5 h-1.5 bg-indigo-500 rounded-full border-2 border-slate-950"></span>
         </button>
         
@@ -55,32 +61,34 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout }) => {
             onClick={() => setIsProfileOpen(!isProfileOpen)}
           >
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-bold text-white group-hover:text-indigo-400 transition-colors">{user.name}</p>
+          
+              <p className="text-sm font-bold text-white group-hover:text-indigo-400 transition-colors">Sugar</p>
               <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none">Pro Account</p>
             </div>
             <div className="w-10 h-10 rounded-full bg-indigo-600 border-2 border-slate-900 shadow-xl overflow-hidden ring-2 ring-transparent group-hover:ring-indigo-500/50 transition-all">
-              <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+              <img src="/default-avatar.svg" alt="Sugar" className="w-full h-full object-cover" />
             </div>
           </div>
 
           {isProfileOpen && (
             <div className="absolute top-full right-0 mt-3 w-64 bg-slate-900 border border-white/10 rounded-2xl shadow-2xl py-3 animate-in fade-in slide-in-from-top-2 duration-200">
               <div className="px-5 py-3 border-b border-white/5 mb-2">
-                <p className="text-sm font-bold text-white truncate">{user.name}</p>
-                <p className="text-xs text-slate-500 truncate">{user.email}</p>
+          
+                <p className="text-sm font-bold text-white truncate">Sugar</p>
+                <p className="text-xs text-slate-500 truncate">sugar@clouddrop.app</p>
               </div>
               <button 
                 onClick={() => { navigate('/settings'); setIsProfileOpen(false); }}
                 className="w-full flex items-center gap-3 px-5 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
               >
-                <FiUser size={16} />
+                <span className="" style={{ fontSize: '16px' }}><FiUser /></span>
                 Profile Settings
               </button>
               <button 
                 onClick={() => { navigate('/settings'); setIsProfileOpen(false); }}
                 className="w-full flex items-center gap-3 px-5 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
               >
-                <FiSettings size={16} />
+                <span className="" style={{ fontSize: '16px' }}><FiSettings /></span>
                 Preferences
               </button>
               <div className="h-px bg-white/5 my-2"></div>
@@ -88,7 +96,7 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout }) => {
                 onClick={onLogout}
                 className="w-full flex items-center gap-3 px-5 py-2.5 text-sm text-rose-400 hover:text-rose-300 hover:bg-rose-500/5 transition-colors"
               >
-                <FiLogOut size={16} />
+                <span className="" style={{ fontSize: '16px' }}><FiLogOut /></span>
                 Sign Out
               </button>
             </div>
